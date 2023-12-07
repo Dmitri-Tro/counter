@@ -1,38 +1,53 @@
-.App {
-  text-align: center;
+.counter {
+    margin: 15% 40%;
+    color: darkcyan;
+    border: 2px solid darkcyan;
+    border-radius: 10px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.counter-display,
+.counter-display_max{
+    display: flex;
+    color: #222222;
+    background-color: darkcyan;
+    font-size: 48px;
+    justify-content: center;
+    border: 2px solid darkcyan;
+    border-radius: 10px;
+    padding: 30px;
+    margin: 10px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.counter-display_max {
+    color: crimson;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.controls {
+    display: flex;
+    border: 2px solid darkcyan;
+    border-radius: 10px;
+    justify-content: space-around;
+    padding: 10px;
+    margin: 10px;
 }
 
-.App-link {
-  color: #61dafb;
+.control-btn,
+.control-btn-disabled {
+    color: #222222;
+    background-color: darkcyan;
+    border: 2px solid darkcyan;
+    min-width: 100px;
+    border-radius: 10px;
+    padding: 5px 20px;
+    margin: 10px;
+    cursor: pointer;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.control-btn:active {
+    color: darkcyan;
+    background-color: #222222;
+}
+
+.control-btn-disabled {
+    opacity: 40%;
 }
