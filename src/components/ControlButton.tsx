@@ -1,20 +1,14 @@
-import React, {FC} from "react";
+import React, {ComponentPropsWithoutRef, FC, ReactNode} from "react";
 
 
-type ControlButtonPropsType = {
-    title: string
-    buttonHandler: () => void
-    styles: string
-    btnIsDisabled: boolean
-}
-export const ControlButton: FC<ControlButtonPropsType> = ({title, buttonHandler, styles, btnIsDisabled}) => {
+type ControlButtonPropsType = ComponentPropsWithoutRef<'button'> & {variant?:'primary'}
+export const ControlButton: FC<ControlButtonPropsType> = ({children,className,...restProps}) => {
     return (
         <button
-            disabled={btnIsDisabled}
-            className={styles}
-            onClick={buttonHandler}
+            className={`control-btn ${className}`}
+            {...restProps}
         >
-            {title}
+            {children}
         </button>
     )
 }

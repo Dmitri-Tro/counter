@@ -1,12 +1,10 @@
 import React, {useState} from 'react';
 import './App.css';
 import {Counter} from "./components/Counter";
-
+const maxCount = 5;
 function App() {
 
   const [count, setCount] = useState(0);
-
-  const maxCount = 5;
 
   const updateCount = () => {
       setCount(count + 1);

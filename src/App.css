@@ -31,8 +31,7 @@
     margin: 10px;
 }
 
-.control-btn,
-.control-btn-disabled {
+.control-btn {
     color: #222222;
     background-color: darkcyan;
     border: 2px solid darkcyan;
@@ -48,6 +47,6 @@
     background-color: #222222;
 }
 
-.control-btn-disabled {
+.control-btn:disabled {
     opacity: 40%;
 }

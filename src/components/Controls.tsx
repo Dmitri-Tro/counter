@@ -12,17 +12,13 @@ export const Controls: FC<ControlsPropsType> = ({count, maxCount, updateCount, r
     return (
         <div className={'controls'}>
             <ControlButton
-                styles={count !== maxCount ? 'control-btn' : 'control-btn-disabled'}
-                btnIsDisabled={count === maxCount}
-                title={'Inc'}
-                buttonHandler={updateCount}
-            />
+                disabled={count === maxCount}
+                onClick={updateCount}
+            >Inc</ControlButton>
             <ControlButton
-                styles={count !== 0 ? 'control-btn' : 'control-btn-disabled'}
-                btnIsDisabled={count === 0}
-                title={'Reset'}
-                buttonHandler={resetCount}
-            />
+                disabled={count === 0}
+                onClick={resetCount}
+            >Reset</ControlButton>
         </div>
     )
 }
