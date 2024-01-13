@@ -1,35 +1,27 @@
 import React, {FC} from "react";
 import {ControlButton} from "./ControlButton";
+import {useDispatch, useSelector} from "react-redux";
+import {resetCountAC, State, updateCountAC} from "../store/reducers/counterReducer";
+import {RootState} from "../store/store";
 
-type ControlsPropsType = {
-    count: number
-    maxCount: number
-    updateCount: () => void
-    resetCount: () => void
-    startInputValue: number
-    setterChange: boolean
-}
-export const Controls: FC<ControlsPropsType> = ({
-                                                    count,
-                                                    maxCount,
-                                                    updateCount,
-                                                    resetCount,
-                                                    startInputValue,
-                                                    setterChange
-                                                }) => {
+type ControlsPropsType = {  }
+export const Controls: FC<ControlsPropsType> = () => {
+    const state = useSelector<RootState, State>(state => state.counterState);
+    const dispatch = useDispatch();
+
     return (
         <div className={'controls'}>
             <ControlButton
-                disabled={count === maxCount || setterChange}
-                onClick={updateCount}
+                disabled={state.count === state.maxValue || state.settingsAreChanged}
+                onClick={() => dispatch(updateCountAC())}
                 className={'control-btn'}
             >Inc</ControlButton>
             <ControlButton
-                disabled={count === startInputValue || setterChange}
-                onClick={resetCount}
+                disabled={state.count === state.startValue || state.settingsAreChanged}
+                onClick={() => dispatch(resetCountAC())}
                 className={'control-btn'}
             >Reset</ControlButton>
         </div>
     )
-}
+};
 

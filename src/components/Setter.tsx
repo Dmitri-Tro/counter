@@ -1,43 +1,13 @@
-import React, {FC} from "react";
+import React, {FC, memo} from "react";
 import {SetterControls} from "./SetterControls";
 import {SetterDisplay} from "./SetterDisplay";
 
-type SetterPropsType = {
-    startInputValue: number
-    maxInputValue: number
-    onStartValueInputChange: (value: number) => void
-    onMaxValueInputChange: (value: number) => void
-    setOptions: () => void
-    startInputError: boolean
-    maxInputError: boolean
-    setterChange: boolean
-}
-export const Setter: FC<SetterPropsType> = ({
-                                                startInputValue,
-                                                maxInputValue,
-                                                onStartValueInputChange,
-                                                onMaxValueInputChange,
-                                                setOptions,
-                                                startInputError,
-                                                maxInputError,
-                                                setterChange
-                                            }) => {
+type SetterPropsType = {}
+export const Setter: FC<SetterPropsType> = memo(() => {
     return (
         <div className={'counter'}>
-            <SetterDisplay
-                startInputValue={startInputValue}
-                onStartValueInputChange={onStartValueInputChange}
-                maxInputValue={maxInputValue}
-                onMaxValueInputChange={onMaxValueInputChange}
-                startInputError={startInputError}
-                maxInputError={maxInputError}
-            />
-            <SetterControls
-                setOptions={setOptions}
-                startInputError={startInputError}
-                maxInputError={maxInputError}
-                setterChange={setterChange}
-            />
+            <SetterDisplay/>
+            <SetterControls/>
         </div>
     )
-}
+});

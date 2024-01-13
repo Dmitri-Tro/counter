@@ -1,38 +1,40 @@
-import React, {ChangeEvent, FC} from "react";
+import React, {ChangeEvent, FC, memo} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {
+    changeTempMaxValueAC,
+    changeTempStartValueAC,
+    settingsIsChangedAC, startValueErrorAC,
+    State, valueErrorAC
+} from "../store/reducers/counterReducer";
+import {RootState} from "../store/store";
 
-type SetterDisplayProps = {
-    startInputValue: number
-    onStartValueInputChange: (value: number) => void
-    maxInputValue: number
-    onMaxValueInputChange: (value: number) => void
-    startInputError: boolean
-    maxInputError: boolean
-}
+type SetterDisplayProps = {  }
 
-export const SetterDisplay: FC<SetterDisplayProps> = ({
-                                                          startInputValue,
-                                                          onStartValueInputChange,
-                                                          maxInputValue,
-                                                          onMaxValueInputChange,
-                                                          startInputError,
-                                                          maxInputError
-                                                      }) => {
+export const SetterDisplay: FC<SetterDisplayProps> = memo(() => {
+
+    const state = useSelector<RootState, State>(state => state.counterState);
+    const dispatch = useDispatch();
+
     const startValueInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        onStartValueInputChange(Number(e.currentTarget.value))
-    }
+        dispatch(changeTempStartValueAC(Number(e.currentTarget.value)));
+        dispatch(settingsIsChangedAC(true));
+        dispatch(startValueErrorAC());
+        dispatch(valueErrorAC());
+    };
     const maxValueInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        onMaxValueInputChange(Number(e.currentTarget.value))
-    }
-
+        dispatch(changeTempMaxValueAC(Number(e.currentTarget.value)));
+        dispatch(settingsIsChangedAC(true));
+        dispatch(valueErrorAC());
+    };
     return (
         <div className={'display'}>
             <div>
                 <span>Max value</span>
                 <input
                     className={"setter-input"}
-                    style={maxInputError ? {backgroundColor: 'red'} : {}}
+                    style={state.valueError ? {backgroundColor: 'red'} : {}}
                     type={"number"}
-                    value={maxInputValue}
+                    value={state.tempMaxValue}
                     onChange={maxValueInputHandler}
                 />
             </div>
@@ -40,12 +42,12 @@ export const SetterDisplay: FC<SetterDisplayProps> = ({
                 <span>Start value</span>
                 <input
                     className={'setter-input'}
-                    style={startInputError ? {backgroundColor: 'red'} : {}}
+                    style={state.valueError || state.startValueError ? {backgroundColor: 'red'} : {}}
                     type={"number"}
-                    value={startInputValue}
+                    value={state.tempStartValue}
                     onChange={startValueInputHandler}
                 />
             </div>
         </div>
     )
-}
+});
