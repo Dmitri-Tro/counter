@@ -1,18 +1,17 @@
-import React, {FC, memo} from "react";
+import React, {FC, useCallback} from "react";
 import {ControlButton} from "./ControlButton";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../store/store";
 import {setSettingsAC, settingsIsChangedAC, State} from "../store/reducers/counterReducer";
 
-type ControlsPropsType = {  }
-export const SetterControls: FC<ControlsPropsType> = memo(() => {
+export const SetterControls: FC = () => {
     const state = useSelector<RootState, State>(state => state.counterState);
     const dispatch = useDispatch();
 
-    const setOptions = () => {
+    const setOptions = useCallback(() => {
         dispatch(setSettingsAC(state.tempStartValue, state.tempMaxValue));
         dispatch(settingsIsChangedAC(false));
-    };
+    }, [dispatch, state.tempStartValue, state.tempMaxValue]);
     return (
         <div className={'controls'}>
             <ControlButton
@@ -24,4 +23,4 @@ export const SetterControls: FC<ControlsPropsType> = memo(() => {
             </ControlButton>
         </div>
     )
-});
+};

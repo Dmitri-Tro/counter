@@ -1,4 +1,4 @@
-import React, {ChangeEvent, FC, memo} from "react";
+import React, {ChangeEvent, FC} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {
     changeTempMaxValueAC,
@@ -8,9 +8,8 @@ import {
 } from "../store/reducers/counterReducer";
 import {RootState} from "../store/store";
 
-type SetterDisplayProps = {  }
 
-export const SetterDisplay: FC<SetterDisplayProps> = memo(() => {
+export const SetterDisplay: FC = () => {
 
     const state = useSelector<RootState, State>(state => state.counterState);
     const dispatch = useDispatch();
@@ -50,4 +49,4 @@ export const SetterDisplay: FC<SetterDisplayProps> = memo(() => {
             </div>
         </div>
     )
-});
+};

@@ -1,12 +1,11 @@
-import React, {FC, memo} from "react";
+import React, {FC} from "react";
 import {Controls} from "./Controls";
 import {useSelector} from "react-redux";
 import {RootState} from "../store/store";
 import {State} from "../store/reducers/counterReducer";
 
 
-type CounterPropsType = {  }
-export const Counter: FC<CounterPropsType> = memo(() => {
+export const Counter: FC = () => {
     const state = useSelector<RootState, State>(state => state.counterState);
 
     return (
@@ -20,4 +19,4 @@ export const Counter: FC<CounterPropsType> = memo(() => {
             <Controls />
         </div>
     )
-});
+};

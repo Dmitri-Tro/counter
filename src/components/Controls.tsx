@@ -4,8 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {resetCountAC, State, updateCountAC} from "../store/reducers/counterReducer";
 import {RootState} from "../store/store";
 
-type ControlsPropsType = {  }
-export const Controls: FC<ControlsPropsType> = () => {
+export const Controls: FC = () => {
     const state = useSelector<RootState, State>(state => state.counterState);
     const dispatch = useDispatch();
 
