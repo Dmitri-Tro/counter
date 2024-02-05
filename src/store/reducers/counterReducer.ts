@@ -23,7 +23,7 @@ export const resetCountAC = () => {
 };
 
 type ChangeTempStartValueAC = ReturnType<typeof changeTempStartValueAC>
-export const changeTempStartValueAC = (value: number) => {
+export const changeTempStartValueAC = (value: string) => {
     return {
         type: 'CHANGE_TEMP_START_VALUE',
         payload: {
@@ -33,7 +33,7 @@ export const changeTempStartValueAC = (value: number) => {
 };
 
 type ChangeTempMaxValueAC = ReturnType<typeof changeTempMaxValueAC>
-export const changeTempMaxValueAC = (value: number) => {
+export const changeTempMaxValueAC = (value: string) => {
     return {
         type: 'CHANGE_TEMP_MAX_VALUE',
         payload: {
@@ -105,9 +105,9 @@ export const counterReducer = (state: State = initialState, action: CounterReduc
         case 'RESET_COUNT':
             return {...state, count: state.startValue}
         case 'CHANGE_TEMP_START_VALUE':
-            return {...state, tempStartValue: action.payload.value}
+            return {...state, tempStartValue: Number(action.payload.value)}
         case 'CHANGE_TEMP_MAX_VALUE':
-            return {...state, tempMaxValue: action.payload.value}
+            return {...state, tempMaxValue: Number(action.payload.value)}
         case 'SET_SETTINGS':
             return {...state, count: Number(action.payload.startValue), startValue: Number(action.payload.startValue), maxValue: Number(action.payload.maxValue)}
         case 'SETTINGS_ARE_CHANGED':
@@ -115,7 +115,6 @@ export const counterReducer = (state: State = initialState, action: CounterReduc
         case 'START_VALUE_ERROR':
             return {...state, startValueError: state.tempStartValue < 0}
         case 'VALUE_ERROR':
-            debugger
             return {...state, valueError: state.tempStartValue >= state.tempMaxValue}
         default:
             return state

@@ -15,13 +15,13 @@ export const SetterDisplay: FC = () => {
     const dispatch = useDispatch();
 
     const startValueInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        dispatch(changeTempStartValueAC(Number(e.currentTarget.value)));
+        dispatch(changeTempStartValueAC(e.currentTarget.value));
         dispatch(settingsIsChangedAC(true));
         dispatch(startValueErrorAC());
         dispatch(valueErrorAC());
     };
     const maxValueInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        dispatch(changeTempMaxValueAC(Number(e.currentTarget.value)));
+        dispatch(changeTempMaxValueAC(e.currentTarget.value));
         dispatch(settingsIsChangedAC(true));
         dispatch(valueErrorAC());
     };

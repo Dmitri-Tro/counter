@@ -33,7 +33,7 @@ test('should update count', () => {
     expect(endState.valueError).toBe(false);
 });
 test('should update tempStartValue', () => {
-    const endState = counterReducer(startState, changeTempStartValueAC(5));
+    const endState = counterReducer(startState, changeTempStartValueAC('5'));
     expect(endState.count).toBe(1);
     expect(endState.tempStartValue).toBe(5);
     expect(endState.tempMaxValue).toBe(5);
@@ -44,7 +44,7 @@ test('should update tempStartValue', () => {
     expect(endState.valueError).toBe(false);
 });
 test('should update tempMaxValue', () => {
-    const endState = counterReducer(startState, changeTempMaxValueAC(6));
+    const endState = counterReducer(startState, changeTempMaxValueAC('6'));
     expect(endState.count).toBe(1);
     expect(endState.tempStartValue).toBe(0);
     expect(endState.tempMaxValue).toBe(6);
