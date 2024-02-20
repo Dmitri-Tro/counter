@@ -1,7 +1,7 @@
-import React from 'react';
-import './App.css';
-import {Counter} from "./components/Counter";
-import {Setter} from "./components/Setter";
+import React from "react";
+import "./App.css";
+import { Counter } from "components/Counter";
+import { Setter } from "components/Setter";
 
 function App() {
     return (
@@ -9,7 +9,7 @@ function App() {
             <Setter />
             <Counter />
         </div>
-    )
+    );
 }
 
 export default App;

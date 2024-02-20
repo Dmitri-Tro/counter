@@ -1,13 +1,13 @@
-import React, {FC} from "react";
-import {SetterControls} from "./SetterControls";
-import {SetterDisplay} from "./SetterDisplay";
+import React, { FC } from "react";
+import { SetterControls } from "./SetterControls";
+import { SetterDisplay } from "./SetterDisplay";
 
-type SetterPropsType = {}
+type SetterPropsType = {};
 export const Setter: FC<SetterPropsType> = () => {
     return (
-        <div className={'counter'}>
+        <div className={"counter"}>
             <SetterDisplay />
             <SetterControls />
         </div>
-    )
+    );
 };

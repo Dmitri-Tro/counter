@@ -1,8 +1,8 @@
-import {RootState} from "../store/store";
+import { RootState } from "store/store";
 
 export const loadState = () => {
     try {
-        const serializedState = localStorage.getItem('state');
+        const serializedState = localStorage.getItem("state");
         if (!serializedState) {
             return undefined;
         }
@@ -14,8 +14,8 @@ export const loadState = () => {
 
 export const saveState = (state: RootState) => {
     try {
-        localStorage.setItem('state', JSON.stringify(state));
+        localStorage.setItem("state", JSON.stringify(state));
     } catch (err) {
-        // some code
+        console.error('Error: ', err);
     }
-}
+};
